@@ -26,7 +26,7 @@ $ python deepdream.py -g 0 -i sample.png -o out_image
 
 ## Generated image sample
 
-Original image
-<img src="//raw.githubusercontent.com/dsanno/chainer-deepdream/master/image/original.png" width="484px alt="generated image sample">
-Generated after 20 iterations
-<img src="//raw.githubusercontent.com/dsanno/chainer-deepdream/master/image/generated.png" width="484px alt="generated image sample">
+Original image  
+<img src="https://raw.githubusercontent.com/dsanno/chainer-deepdream/master/image/original.png" width="484px alt="generated image sample">  
+Generated after 20 iterations  
+<img src="https://raw.githubusercontent.com/dsanno/chainer-deepdream/master/image/generated.png" width="484px alt="generated image sample">  
