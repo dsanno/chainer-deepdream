@@ -16,6 +16,8 @@ parser.add_argument('--image', '-i', required=True, type=str,
                     help='image file path')
 parser.add_argument('--output_dir', '-o', default='.', type=str,
                     help='directory to output images')
+parser.add_argument('--size', '-s', default=-1, type=int,
+                    help='output image size')
 parser.add_argument('--iter', default=100, type=int,
                     help='number of iteration')
 args = parser.parse_args()
@@ -60,7 +62,13 @@ def update(net, base_image, step_num=10, octave_num=4, octave_scale=1.4, end='in
         detail = x[0] - octave_base
     return net.deprocess(x[0])
 
-image = np.float32(Image.open(args.image).convert('RGB'))
+image = Image.open(args.image).convert('RGB')
+if args.size > 0:
+    w, h = image.size
+    scale = float(args.size) / max(w, h)
+    new_size = (int(w * scale), int(h * scale))
+    image = image.resize(new_size, Image.BILINEAR)
+image = np.float32(image)
 output_dir = args.output_dir
 try:
     if not os.path.exists(output_dir):

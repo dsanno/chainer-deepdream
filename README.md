@@ -22,6 +22,7 @@ $ python deepdream.py -g 0 -i sample.png -o out_image
 * -i file_path: Input image file path.
 * -o dir_path: Output image directory path.
 * -m file_path: Caffe model file path. Default is "bvlc_googlenet.caffemodel".
+* -s size: Output image size. Image will be zoomed so that the larger side length equals this value.
 * --iter n: Number of iterations. Default is 100.
 
 ## Generated image sample
