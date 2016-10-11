@@ -74,10 +74,10 @@ try:
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
     if not os.path.isdir(output_dir):
-        print 'Error: output path is not directory: {}'.format(output_dir)
+        print('Error: output path is not directory: {}'.format(output_dir))
         exit()
 except:
-    print 'Error: cannot make dir: {}'.format(output_dir)
+    print('Error: cannot make dir: {}'.format(output_dir))
     exit()
 net = GoogleNet(args.model)
 if args.gpu >= 0:
@@ -92,4 +92,4 @@ for iteration in range(args.iter):
     image = update(net, image)
     Image.fromarray(image.astype(np.uint8)).save(os.path.join(output_dir, 'deepdream_{0:03d}.png'.format(iteration)))
     image = nd.affine_transform(image, [1 - scale, 1 - scale, 1], [h * scale / 2, w * scale / 2, 0], order=1)
-    print 'iteration {} done'.format(iteration + 1)
+    print('iteration {} done'.format(iteration + 1))
