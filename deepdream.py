@@ -31,7 +31,7 @@ def update_step(net, images, step_size=1.5, end='inception_4c/output', jitter=32
     data = np.roll(np.roll(images, offset_x, -1), offset_y, -2)
 
     x = Variable(xp.asarray(data))
-    x.zerograd()
+    x.cleargrad()
     dest, = net(x, outputs=[end])
     objective(dest).backward()
     g = cuda.to_cpu(x.grad)
@@ -91,5 +91,6 @@ h, w = image.shape[:2]
 for iteration in range(args.iter):
     image = update(net, image)
     Image.fromarray(image.astype(np.uint8)).save(os.path.join(output_dir, 'deepdream_{0:03d}.png'.format(iteration)))
-    image = nd.affine_transform(image, [1 - scale, 1 - scale, 1], [h * scale / 2, w * scale / 2, 0], order=1)
+    matrix = [[1 - scale, 0, 0], [0, 1 - scale, 0], [0, 0, 1]]
+    image = nd.affine_transform(image, matrix, [h * scale / 2, w * scale / 2, 0], order=1)
     print('iteration {} done'.format(iteration + 1))

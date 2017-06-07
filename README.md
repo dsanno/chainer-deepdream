@@ -1,10 +1,11 @@
 # Deep Dreams implementation using Chainer
 
-## Requirement
+## Requirements
 
-* Python
-* [Chainer](http://chainer.org/)
-* [Pillow](https://pillow.readthedocs.org/en/3.0.x/)
+* Python 2.7
+* [Chainer 2.0.0](http://chainer.org/)
+* [Cupy 1.0.0](http://docs.cupy.chainer.org/en/stable/)
+* [Pillow 3.1.0](https://pillow.readthedocs.io/)
 
 ## Usage
 
